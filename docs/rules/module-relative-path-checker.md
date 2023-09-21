@@ -4,36 +4,40 @@
 
 <!-- end auto-generated rule header -->
 
-Please describe the origin of the rule here.
-
 ## Rule Details
 
-This rule aims to...
+Within one slice, all paths must be relative
 
 Examples of **incorrect** code for this rule:
 
 ```js
-
-// fill me in
-
+    {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from 'entities/Article/model/slices/addCommentFormSlice'",
+      errors: [{ message: "Within one slice, all paths must be relative"}],
+      output: "import { addCommentFormActions, addCommentFormReducer } from './Article/model/slices/addCommentFormSlice'"
+    },
 ```
 
 Examples of **correct** code for this rule:
 
 ```js
-
-// fill me in
-
+ {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
+      errors: [],
+    },
 ```
 
 ### Options
 
-If there are any options, describe them here. Otherwise, delete this section.
-
-## When Not To Use It
-
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+```js
+ {
+        type: 'object',
+        properties: {
+          alias: {
+            type: 'string'
+          }
+        }
+      }
+```
